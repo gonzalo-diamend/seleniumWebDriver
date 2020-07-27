@@ -1,6 +1,6 @@
-const {webdriver, Builder, By, Key, until} = require('selenium-webdriver'),
-// test = require('selenium-webdriver/testing'),
-assert = require('assert');
+const homePage = require('./page-objects/homePage.js');
+const mainPage = require('./page-objects/mainPage.js');
+
 
 // Test data
 const loginEmail = 'admin'
@@ -9,28 +9,26 @@ const url = 'https://practis.co.il/automation/main.html'
 
 let driver;
 
-test.describe('SecuritizeTest', function() {
-  test.before(function *() {
+
+// Scenarios test
+describe('SecuritizeTest', () => {
     driver = new Builder().forBrowser('chrome').build();
   });
 
-   test.it('Login into the page', function() {
-
-  });
-
-    test.it('Click in do Buttons', function() {
-
+   it('Login into the page', async () => {
+       await homePage.goToLoginPage(loginEmail, loginPassword, url);
 });
 
-    test.it('Change font text', function() {
+//     it('Click in do Buttons', async () => {
+//         mainPage.goToLoginPage();
 
-});
+// });
 
-    test.it('Change Backgroun color', function() {
+//     it('Change font text', async () => {
 
-});
+// });
 
+//     it('Change Backgroun color', async () => {
 
+// });
 
-  test.after(() => driver.quit());
-});

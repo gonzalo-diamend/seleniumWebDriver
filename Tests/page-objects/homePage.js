@@ -1,4 +1,8 @@
-const {By} = require('selenium-webdriver');
+const {Builder, By, until} = require('selenium-webdriver');
+
+let driver = new Builder()
+    .forBrowser('chrome')
+    .build();
 
 //Selectors
 
@@ -11,7 +15,7 @@ const loginButton = By.name('[name="login"]');
 
 const goToLoginPage = async (email, password, url) => {
     console.log('Step 1')
-    await driver.get('https://practis.co.il/automation');
+    driver.get('https://practis.co.il/automation');
     await driver.findElement(By.name(loginEmail)).sendKeys(email);
     await driver.findElement(By.name(loginPassword)).sendKeys(password);
     await driver.findElement(By.name(loginButton)).click();
